@@ -1,6 +1,6 @@
 # Sample-Python-Telegram-Bot-AWS-Serverless
 
-This project contains source code and supporting files for a [Python Telegram Bot](https://python-telegram-bot.readthedocs.io/en/stable/) serverless application that you can deploy with the AWS SAM CLI. You can run this for free - the AWS Lambda free tier includes one million free requests per month and 400,000 GB-seconds of compute time per month.
+This project contains source code and supporting files for a [Python Telegram Bot](https://python-telegram-bot.readthedocs.io/en/stable/) serverless application, using [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks), that you can deploy with the AWS SAM CLI. You can run this for free - the AWS Lambda free tier includes one million free requests per month and 400,000 GB-seconds of compute time per month.
 
 # Architecture
 Requests come in via the Lambda URL endpoint, which get routed to a Lambda function. the Lambda function runs and posts back to Telegram. Logs are stored on CloudWatch. 
