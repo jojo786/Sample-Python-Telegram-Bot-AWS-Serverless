@@ -32,7 +32,7 @@ The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI
 
 ## Deploy the sample application
 
-- Create your bot using BotFather, and note the token, e.g. 12334342:ABCD124324234
+- Create your bot using [BotFather](https://core.telegram.org/bots#6-botfather), and note the token, e.g. 12334342:ABCD124324234
 - Update ptb_lambda.py with the token
 - Install AWS CLI, and configure it
 
