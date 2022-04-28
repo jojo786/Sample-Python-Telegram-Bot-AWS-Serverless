@@ -8,7 +8,7 @@ Requests come in via the Lambda URL endpoint, which get routed to a Lambda funct
 
 It includes the following files and folders.
 
-- ptb_lambda.py - Code for the bot's Lambda function.
+- ptb_lambda.py - Code for the bot's Lambda function. It echos back whatever text is sent to the bot.
 - events - Invocation events that you can use to invoke the function.
 - tests - Unit tests for the application code. 
 - template.yaml - A template that defines the application's AWS resources.
