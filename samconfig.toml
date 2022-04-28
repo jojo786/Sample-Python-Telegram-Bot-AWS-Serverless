@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "Sample-Python-Telegram-Bot-AWS-Serverless"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1q7y9uu7czp2p"
+s3_prefix = "Sample-Python-Telegram-Bot-AWS-Serverless"
+region = "eu-west-1"
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []
