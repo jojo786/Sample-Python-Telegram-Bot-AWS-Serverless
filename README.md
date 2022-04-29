@@ -2,8 +2,12 @@
 
 This project contains source code and supporting files for a [Python Telegram Bot](https://python-telegram-bot.readthedocs.io/en/stable/) serverless application, using [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks), that you can deploy with the AWS SAM CLI. You can run this for free - the AWS Lambda free tier includes one million free requests per month and 400,000 GB-seconds of compute time per month.
 
+# Versions
+- Python 3.9 
+- python-telegram-bot 13.11
+
 # Architecture
-Requests come in via the Lambda URL endpoint, which get routed to a Lambda function. the Lambda function runs and posts back to Telegram. Logs are stored on CloudWatch. 
+Requests come in via the [Lambda Function URL](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-function-urls-built-in-https-endpoints-for-single-function-microservices/) endpoint, which get routed to a Lambda function. the Lambda function runs and posts back to Telegram. Logs are stored on CloudWatch. 
 ![architecture](Architecture.png)
 
 It includes the following files and folders.
@@ -12,8 +16,9 @@ It includes the following files and folders.
 - events - Invocation events that you can use to invoke the function.
 - tests - Unit tests for the application code. 
 - template.yaml - A template that defines the application's AWS resources.
+- requirements.txt - which pins the version of python-telegram-bot
 
-The application uses several AWS resources, including a Lambda function and a Lambda URL HTTPS endpoint as a Telegram webhook. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
+The application uses several AWS resources, including a Lambda function and a Lambda Function URL HTTPS endpoint as a Telegram webhook. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
 If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.  
 The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI to build and deploy serverless applications on AWS. The AWS Toolkit also adds a simplified step-through debugging experience for Lambda function code. See the following links to get started.
@@ -58,8 +63,9 @@ The first command will build the source of your application. The second command 
 * **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions. To deploy an AWS CloudFormation stack which creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
 * **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
 
-- You can find your Lambda URL Endpoint URL in the output values displayed after deployment.  e.g. https://1fgfgfd56.lambda-url.eu-west-1.on.aws/
-- Update your Telegram bot to change from polling to Webhook, by pasting this URL in your browser, or curl'ing it: https://api.telegram.org/bot12334342:ABCD124324234/setWebHook?url=https://1fgfgfd56.lambda-url.eu-west-1.on.aws/. Use your bot token and Lambda URL endpoint. You can check that it was set correctly by going to https://api.telegram.org/bot12334342:ABCD124324234/getWebhookInfo, which should include the url of your Lambda URL, as well as any errors Telegram is encounterting calling your bot on that API.
+- You can find your Lambda Function URL Endpoint in the output values displayed after deployment.  e.g. `https://1fgfgfd56.lambda-url.eu-west-1.on.aws/`
+- Update your [Telegram bot to change from polling to Webhook](https://xabaras.medium.com/setting-your-telegram-bot-webhook-the-easy-way-c7577b2d6f72), by pasting this URL in your browser, or curl'ing it: 
+`https://api.telegram.org/bot12334342:ABCD124324234/setWebHook?url=https://1fgfgfd56.lambda-url.eu-west-1.on.aws/.` Use your bot token and Lambda Function URL endpoint. You can check that it was set correctly by going to `https://api.telegram.org/bot12334342:ABCD124324234/getWebhookInfo`, which should include the url of your Lambda Function URL, as well as any errors Telegram is encounterting calling your bot on that API.
 
 For future deploys, you can just run:
 
@@ -138,3 +144,6 @@ Next, you can use AWS Serverless Application Repository to deploy ready to use A
 
 # Whats Next?
 - Instead of storing the Telegram token in your source code, use Lambda Environment Variables, or AWS SSM to securely store the token
+- What to store data? Try out [Amazon DynamoDB](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-dynamo-db.html)
+- High load, and what to respond async to Telegram? Try adding an [SQS queue in front of the Lambda function](https://serverlessland.com/patterns/sqs-lambda)
+- Check out [this fully featured Telegram Bot](https://github.com/jojo786/TelegramTasweerBot) running on AWS Serverless

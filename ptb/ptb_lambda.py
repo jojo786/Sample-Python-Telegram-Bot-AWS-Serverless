@@ -2,7 +2,7 @@ import json
 from telegram.ext import Dispatcher, MessageHandler, Filters
 from telegram import Update, Bot
 
-bot = Bot(token="INSERT YOUR TOKEN FROM BOTFATHER HERE")
+bot = Bot(token="--INSERT YOUR BOT TOKEN HERE--")
 dispatcher = Dispatcher(bot, None, use_context=True)
 
 def echo(update, context):
