@@ -143,7 +143,7 @@ See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-applica
 Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
 
 # Whats Next?
-- Instead of storing the Telegram token in your source code, use Lambda Environment Variables, or AWS SSM to securely store the token
-- What to store data? Try out [Amazon DynamoDB](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-dynamo-db.html)
+- Instead of storing the Telegram token in your source code, use [Lambda Environment Variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html), or [AWS SSM](https://aws.amazon.com/blogs/compute/sharing-secrets-with-aws-lambda-using-aws-systems-manager-parameter-store/) to securely store the token
+- Want to store data in a serverless database? Try out [Amazon DynamoDB](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-dynamo-db.html)
 - High load, and what to respond async to Telegram? Try adding an [SQS queue in front of the Lambda function](https://serverlessland.com/patterns/sqs-lambda)
 - Check out [this fully featured Telegram Bot](https://github.com/jojo786/TelegramTasweerBot) running on AWS Serverless
