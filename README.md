@@ -1,13 +1,15 @@
-# Sample-Python-Telegram-Bot-AWS-Serverless
+# Sample-Python-Telegram-Bot-AWS-Serverless-PTBv13.x
 
-This project contains source code and supporting files for a [Python Telegram Bot](https://python-telegram-bot.readthedocs.io/en/stable/) serverless application, using [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks), that you can deploy with the AWS SAM CLI. You can run this for free - the AWS Lambda free tier includes one million free requests per month and 400,000 GB-seconds of compute time per month.
+This is for PTB v13.x. For PTB v20.x and higher, see [this repo](https://github.com/jojo786/Sample-Python-Telegram-Bot-AWS-Serverless-PTBv20/)
+
+This project contains source code and supporting files for a [Python Telegram Bot](https://python-telegram-bot.readthedocs.io/en/stable/) v13.x serverless application, using [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks), that you can deploy with the AWS SAM CLI. You can run this for free - the [AWS Lambda free tier](https://aws.amazon.com/lambda/pricing/) includes one million free requests per month and 400,000 GB-seconds of compute time per month.
 
 # Versions
 - Python 3.9 
-- python-telegram-bot 13.11
+- python-telegram-bot 13.14 (pinned in `requirements.txt`)
 
 # Architecture
-Requests come in via the [Lambda Function URL](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-function-urls-built-in-https-endpoints-for-single-function-microservices/) endpoint, which get routed to a Lambda function. the Lambda function runs and posts back to Telegram. Logs are stored on CloudWatch. 
+Requests come in via the [Lambda Function URL](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-function-urls-built-in-https-endpoints-for-single-function-microservices/) endpoint, which get routed to a Lambda function. The Lambda function runs and posts back to Telegram. Logs are stored on CloudWatch. All of this is defined using [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html), an IaC toolkit that simplifies building and running serverless applications on AWS.
 ![architecture](Architecture.png)
 
 It includes the following files and folders.
