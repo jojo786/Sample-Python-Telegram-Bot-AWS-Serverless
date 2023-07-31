@@ -6,7 +6,7 @@ Description: >
 Globals:
   Function:
     Timeout: 3
-    Runtime: python3.9
+    Runtime: python3.11
     Architectures:
       - arm64
 
