@@ -9,6 +9,9 @@ Globals:
     Runtime: python3.11
     Architectures:
       - arm64
+    LoggingConfig:
+      LogGroup: !Sub /aws/lambda/${AWS::StackName}
+      LogFormat: JSON
 
 Resources:
   PTBFunction:
